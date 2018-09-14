@@ -1,0 +1,13 @@
+version: '3'
+services:
+   web:
+      build: web
+      ports:
+       - "80:80"
+   mumble:
+      build: mumble
+      ports:
+       - "64738:64738"
+       - "64738:64738/udp"
+      volumes:
+         - /home/dixieflatline/docker/mumble/mumble-server:/data

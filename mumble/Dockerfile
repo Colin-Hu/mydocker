@@ -1,0 +1,1 @@
+FROM coppit/mumble-server
