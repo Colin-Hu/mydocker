@@ -1,9 +1,11 @@
 version: '3'
 services:
    web:
-      build: web
+      build: web-rtmp
       ports:
        - "80:80"
+       - "1935:1935"
+
    mumble:
       build: mumble
       ports:
