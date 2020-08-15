@@ -4,7 +4,13 @@ services:
       build: web-rtmp
       ports:
        - "80:80"
+       - "443:443"
        - "1935:1935"
+      volumes:
+         - /home/dixieflatline/docker/web-rtmp/html:/usr/share/nginx/html
+         - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
+         - /home/dixieflatline/docker/letsencrypt-volumes/etc/letsencrypt/live/colinwhu.com/fullchain.pem:/etc/letsencrypt/live/colinwhu.com/fullchain.pem
+         - /home/dixieflatline/docker/letsencrypt-volumes/etc/letsencrypt/live/colinwhu.com/privkey.pem:/etc/letsencrypt/live/colinwhu.com/privkey.pem
 
    mumble:
       build: mumble

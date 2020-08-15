@@ -1,5 +1,8 @@
+# Docker certbot based on:
+# https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx
+
 FROM tiangolo/nginx-rtmp
 #RUN apt-get install build-essential libpcre3 libpcre3-dev libssl-dev
 #RUN wget https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/archive/dev.zip
-COPY html /usr/share/nginx/html
+#COPY html /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
