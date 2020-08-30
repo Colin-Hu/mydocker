@@ -5,7 +5,9 @@ services:
       ports:
        - "80:80"
        - "443:443"
+       - "6503:6503"
        - "1935:1935"
+       - "8443:8443"
       volumes:
          - /home/dixieflatline/docker/web-rtmp/html:/usr/share/nginx/html
          - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
