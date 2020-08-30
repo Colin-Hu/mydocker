@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="webrtc.js"></script>
+  </head>
+
+  <body>
+    <video controls id="localVideo" autoplay muted style="width:40%;"></video>
+
+    <br />
+    <p >My ID:</p>
+    <p id="myuuid">NULL</p>
+
+    <input type="button" id="start" onclick="start(true)" value="Start Stream"></input>
+
+    <script type="text/javascript">
+        pageReady();
+        getDisplay();
+    </script>
+  </body>
+</html>

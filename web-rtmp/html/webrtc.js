@@ -21,35 +21,42 @@ function pageReady() {
   serverConnection = new WebSocket('wss://' + window.location.hostname + ':8443');
   serverConnection.onmessage = gotMessageFromServer;
 
+}
+
+function getDisplay() {
   var constraints = {
     video: true,
     audio: true,
   };
 
-  if(navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia(constraints).then(getUserMediaSuccess).catch(errorHandler);
+  if(navigator.mediaDevices.getDisplayMedia) {
+    navigator.mediaDevices.getDisplayMedia(constraints).then(getDisplayMediaSuccess).catch(errorHandler);
   } else {
-    alert('Your browser does not support getUserMedia API');
+    alert('Your browser does not support getDisplayMedia API');
   }
 }
 
-function getUserMediaSuccess(stream) {
+function getDisplayMediaSuccess(stream) {
   localStream = stream;
   localVideo.srcObject = stream;
 }
 
 function start(isCaller) {
+  console.log('Calling Start');
+  console.log(isCaller);
   peerConnection = new RTCPeerConnection(peerConnectionConfig);
   peerConnection.onicecandidate = gotIceCandidate;
   peerConnection.ontrack = gotRemoteStream;
-  peerConnection.addStream(localStream);
 
   if(isCaller) {
+    peerConnection.addStream(localStream);
     peerConnection.createOffer().then(createdDescription).catch(errorHandler);
   }
 }
 
 function gotMessageFromServer(message) {
+  console.log('gotMessageFromServer');
+  updatetext();
   if(!peerConnection) start(false);
 
   var signal = JSON.parse(message.data);
@@ -100,4 +107,8 @@ function createUUID() {
   }
 
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+function updatetext() {
+  document.getElementById('myuuid').innerHTML = uuid;
 }

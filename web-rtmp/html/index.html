@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="webrtc.js"></script>
   </head>
 
-  <body>
-    <video id="localVideo" autoplay muted style="width:40%;"></video>
-    <video id="remoteVideo" autoplay style="width:40%;"></video>
+  <body style="background-color:black;">
+    <video controls poster="streambg.png" id="remoteVideo" autoplay style="width:90%;"></video>
 
-    <br />
-
-    <input type="button" id="start" onclick="start(true)" value="Start Video"></input>
+    <p id="myuuid" style="color:grey;">NULL</p>
 
     <script type="text/javascript">
         pageReady();
