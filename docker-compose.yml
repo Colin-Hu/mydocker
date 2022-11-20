@@ -25,3 +25,16 @@ services:
        - "64738:64738/udp"
       volumes:
          - /home/dixieflatline/docker/mumble/mumble-server:/data
+
+   tempo:
+      build: tempo
+#      ports:
+#       - "3000:3000"
+      volumes:
+         - /home/dixieflatline/projects/Tempo:/Tempo
+      networks:
+         - docker-network
+
+networks:
+   docker-network:
+      driver: bridge
